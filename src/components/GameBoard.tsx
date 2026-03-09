@@ -11,7 +11,7 @@ interface Props {
   onChangeDifficulty: () => void;
 }
 
-export const GameBoard: React.FC<Props> = ({ config, onRestart, onChangeDifficulty }) => {
+export const GameBoard: React.FC<Props> = ({ config, onRestart, onChangeDifficulty, setConfig }) => {
   const [wordData, setWordData] = useState<WordData | null>(null);
   const [guessedLetters, setGuessedLetters] = useState<Set<string>>(new Set());
   const [gameState, setGameState] = useState<GameState>('playing');
@@ -53,6 +53,12 @@ export const GameBoard: React.FC<Props> = ({ config, onRestart, onChangeDifficul
 
   return (
     <div className="flex flex-col items-center w-full max-w-4xl mx-auto animate-in fade-in duration-500">
+      <button
+        onClick={() => setConfig(null)}
+        className="self-start px-4 py-2 text-sm font-medium rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
+      >
+        Atras
+      </button>
       <div className="text-center mb-2">
         <span className="text-sm uppercase tracking-widest opacity-70">Categoría</span>
         <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">{wordData.category}</h3>

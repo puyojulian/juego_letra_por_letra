@@ -25,9 +25,15 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans">
       <div className="max-w-5xl mx-auto px-4 py-8">
         <header className="flex items-center justify-between mb-12">
-          <h1 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-            Hangman App
-          </h1>
+          <button
+            onClick={() => setConfig(null)}
+            className="text-left"
+            aria-label="Go to home"
+          >
+            <h1 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 hover:opacity-80 transition-opacity cursor-pointer">
+              Hangman App
+            </h1>
+          </button>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
@@ -42,7 +48,8 @@ export default function App() {
             <GameConfig onSelectDifficulty={setConfig} />
           ) : (
             <GameBoard 
-              config={config} 
+              config={config}
+              setConfig={setConfig}
               onRestart={() => setConfig({ ...config })}
               onChangeDifficulty={() => setConfig(null)}
             />
